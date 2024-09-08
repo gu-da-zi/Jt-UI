@@ -1,0 +1,95 @@
+.jt-alert {
+  --jt-alert-padding: 8px 16px;
+  --jt-alert-border-radius-base: var(--jt-border-radius-base);
+  --jt-alert-bg-color: var(--jt-color-white);
+  --jt-alert-title-font-size: 13px;
+  --jt-alert-description-font-size: 12px;
+  --jt-alert-close-font-size: 12px;
+  --jt-alert-icon-size: 16px;
+  --jt-alert-text-color: var(--jt-text-color-primary);
+  --jt-alert-top-margin: 20px;
+  --jt-alert-icon-size: 16px;
+  --jt-alert-icon-large-size: 28px;
+}
+.jt-alert {
+  padding: var(--jt-alert-padding);
+  margin: 0;
+  box-sizing: border-box;
+  border-radius: var(--jt-alert-border-radius-base);
+  position: relative;
+  background-color: var(--jt-alert-bg-color);
+  overflow: hidden;
+  opacity: 1;
+  display: flex;
+  align-items: center;
+  transition: opacity var(--jt-transition-duration);
+  margin-top: var(--jt-alert-top-margin);
+  .jt-alert__icon {
+    font-size: var(--jt-alert-icon-size);
+    width: var(--jt-alert-icon-size);
+    &.is-big {
+      font-size: var(--jt-alert-icon-large-size);
+      width: var(--jt-alert-icon-large-size);
+    }
+  }
+  .jt-alert__content {
+    display: table-cell;
+    color: var(--jt-alert-text-color);
+    line-height: 18px;
+    vertical-align: text-top;
+    padding: 0 8px;
+  }
+  .jt-alert__description {
+    font-size: var(--jt-alert-description-font-size);
+    color: var(--jt-alert-text-color);
+    margin: 5px 0 0;
+  }
+  .jt-alert__close-btn {
+    font-size: var(--jt-alert-close-font-size);
+    opacity: 1;
+    position: absolute;
+    top: 12px;
+    right: 15px;
+    cursor: pointer;
+  }
+  &.is-center {
+    justify-content: center;
+  }
+  &.is-light {
+    .jt-alert__close-btn {
+      color: var(--jt-text-color-placeholder);
+    }
+  }
+  &.is-dark {
+    .jt-alert__close-btn {
+      color: var(--jt-color-white);
+    }
+  }
+}
+.jt-alert__title {
+  font-size: var(--jt-alert-title-font-size);
+  line-height: 18px;
+  vertical-align: text-top;
+  &.is-bold {
+    font-weight: 700;
+  }
+}
+
+.jt-alert-fade-enter-from,
+.jt-alert-fade-leave-to {
+  opacity: 0;
+}
+
+@each $val in success, warning, info, danger {
+  .jt-alert__$(val).is-light {
+    --jt-alert-text-color: var(--jt-color-$(val));
+    --jt-alert-bg-color: var(--jt-color-$(val)-light-9);
+    color: var(--jt-alert-text-color);
+  }
+
+  .jt-alert__$(val).is-dark {
+    --jt-alert-text-color: var(--jt-color-white);
+    --jt-alert-bg-color: var(--jt-color-$(val));
+    color: var(--jt-alert-text-color);
+  }
+}

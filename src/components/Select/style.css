@@ -1,0 +1,82 @@
+.jt-select {
+  --jt-select-item-hover-bg-color: var(--jt-fill-color-light);
+  --jt-select-item-font-size: var(--jt-font-size-base);
+  --jt-select-item-font-color: var(--jt-text-color-regular);
+  --jt-select-item-selected-font-color: var(--jt-color-primary);
+  --jt-select-item-disabled-font-color: var(--jt-text-color-placeholder);
+  --jt-select-input-focus-border-color: var(--jt-color-primary);
+}
+
+.jt-select {
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 32px;
+  .jt-tooltip .jt-tooltip__popper {
+    padding: 0;
+  }
+  .jt-input.is-focus .jt-input__wrapper {
+    box-shadow: 0 0 0 1px var(--jt-select-input-focus-border-color) inset !important;
+  }
+  .jt-input {
+    .header-angle {
+      transition: transform var(--jt-transition-duration);
+      &.is-active {
+        transform: rotate(180deg);
+      }
+    }
+  }
+  .jt-input__inner {
+    cursor: pointer;
+  }
+  .jt-select__nodata,
+  .jt-select__loading {
+    padding: 10px 0;
+    margin: 0;
+    text-align: center;
+    color: var(--jt-text-color-secondary);
+    font-size: var(--jt-select-item-font-size);
+  }
+  .jt-select__menu {
+    list-style: none;
+    margin: 6px 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  .jt-select__menu-item {
+    margin: 0;
+    font-size: var(--jt-select-item-font-size);
+    padding: 0 32px 0 20px;
+    position: relative;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: var(--jt-select-item-font-color);
+    height: 34px;
+    line-height: 34px;
+    box-sizing: border-box;
+    cursor: pointer;
+    &:hover {
+      background-color: var(--jt-select-item-hover-bg-color);
+    }
+    &.is-selected {
+      color: var(--jt-select-item-selected-font-color);
+      font-weight: 700;
+    }
+    &.is-selected::before {
+      content: '✔';
+      position: absolute;
+      left: 10px;
+      color: var(--jt-select-item-selected-font-color);
+    }
+    &.is-highlighted {
+      background-color: var(--jt-select-item-hover-bg-color);
+    }
+    &.is-disabled {
+      color: var(--jt-select-item-disabled-font-color);
+      cursor: not-allowed;
+      &:hover {
+        background-color: transparent;
+      }
+    }
+  }
+}
